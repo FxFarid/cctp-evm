@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CCTP Manual Relay</title>
+
+  <!-- Ethers.js -->
+  <script src="https://cdn.jsdelivr.net/npm/ethers@6.8.1/dist/ethers.umd.min.js"></script>
+
+  <!-- Your custom script -->
+  <script defer src="script.js"></script>
+
+  <!-- Dark minimal styling -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      background: #121212;
+      color: #f0f0f0;
+    }
+    input, select, button {
+      margin: 10px 0;
+      padding: 12px;
+      width: 100%;
+      max-width: 500px;
+      display: block;
+      background-color: #1e1e1e;
+      color: #f0f0f0;
+      border: 1px solid #333;
+      border-radius: 5px;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    button:hover {
+      background-color: #45a049;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #1a1a1a;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.7);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    #status {
+      margin-top: 20px;
+      font-weight: bold;
+      text-align: center;
+    }
+    #walletAddress {
+      text-align: center;
+      margin-bottom: 20px;
+      font-size: 14px;
+      color: #a0a0a0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>CCTP Manual Relay</h1>
+
+  <input id="txHash" placeholder="Enter Transaction Hash" />
+
+  <select id="sourceChain">
+    <option value="">Select Source Chain</option>
+    <option value="ethereum">Ethereum</option>
+    <option value="avalanche">Avalanche</option>
+    <option value="optimism">Optimism</option>
+    <option value="arbitrum">Arbitrum</option>
+    <option value="base">Base</option>
+    <option value="polygon">Polygon PoS</option>
+    <option value="unichain">Unichain</option>
+    <option value="linea">Linea</option>
+  </select>
+
+  <select id="destinationChain">
+    <option value="">Select Destination Chain</option>
+    <option value="ethereum">Ethereum</option>
+    <option value="avalanche">Avalanche</option>
+    <option value="optimism">Optimism</option>
+    <option value="arbitrum">Arbitrum</option>
+    <option value="base">Base</option>
+    <option value="polygon">Polygon PoS</option>
+    <option value="unichain">Unichain</option>
+    <option value="linea">Linea</option>
+  </select>
+
+  <button onclick="connectWallet()">Connect Wallet</button>
+  <p id="walletAddress"></p>
+  
+  <button onclick="relay()">Relay Transaction</button>
+
+  <p id="status"></p>
+</div>
+
+</body>
+</html>
