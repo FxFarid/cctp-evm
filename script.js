@@ -64,12 +64,25 @@ async function fetchCCTPMessageSmart(txHash, sourceChain) {
   try {
     const response = await fetch(`https://iris-api.circle.com/v2/messages/${domainID}?transactionHash=${txHash}`);
     const data = await response.json();
-    if (data.messages && data.messages.length > 0) {
-      console.log('Detected V2 message');
-      return { message: data.messages[0].message, attestation: data.messages[0].attestation, version: 2 };
+
+    const isV2Message = data?.messages?.length > 0 && !!data?.messages?.[0].eventNonce; ;
+    const isV2Error = data?.error === "Message not found for provided parameters";
+
+    if (isV2Message && !isV2Error) {
+      console.log("✅ Detected V2 message");
+      if (data?.messages?.[0]?.cctpVersion === 1) {
+        version = 1;
+      } else version = 2;
+      return {
+        message: data.messages[0].message,
+        attestation: data.messages[0].attestation,
+        version
+      };
     }
-  } catch {
-    console.log('V2 fetch failed, trying V1...');
+
+    console.log("⚠️ V2 not valid or error returned. Falling back to V1...");
+  } catch (err) {
+    console.log("❌ V2 fetch threw an exception. Falling back to V1...");
   }
 
   // Try V1
