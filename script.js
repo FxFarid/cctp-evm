@@ -8,6 +8,8 @@ const sourceDomainIDs = {
   polygon: 7,
   unichain: 10,
   linea: 11,
+  sui: 8,
+  solana: 5,
 };
 
 // Contract mapping
