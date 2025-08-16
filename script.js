@@ -21,6 +21,7 @@ const contractsV2 = {
   base: "0x81D40F21F12A8F0E3252Bccb954D722d4c464B64",
   linea: "0x81D40F21F12A8F0E3252Bccb954D722d4c464B64",
   polygon: "0xF3be9355363857F3e001be68856A2f96b4C39Ba9",
+  sonic: "0x9FDE2ca2147882A1a9423B19e86f4E280edb5Cdb",
 };
 
 const contractsV1 = {
@@ -166,4 +167,5 @@ async function relay() {
     status.innerText = `Error: ${error.message || error}`;
   }
 }
+
 
