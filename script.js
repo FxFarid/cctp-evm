@@ -10,6 +10,7 @@ const sourceDomainIDs = {
   linea: 11,
   sui: 8,
   solana: 5,
+  sonic: 13,
 };
 
 // Contract mapping
@@ -165,3 +166,4 @@ async function relay() {
     status.innerText = `Error: ${error.message || error}`;
   }
 }
+
